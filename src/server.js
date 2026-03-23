@@ -13,6 +13,13 @@ app.get("/tarefas", (req, res) => {
 app.post("/tarefas", (req, res) => {
   const { titulo } = req.body;
 
+app.delete("/tarefas/:id"), (req, res) => {
+  const id_delete = parseInt(req.params.id);
+  tarefas = tarefas.filter(tarefas => tarefas.id !== id_delete);
+  res.status(200).send({ mensagem: 'tarefa deletada com sucesso' });
+}
+
+
   if (!titulo || titulo.trim() === "") {
     return res.status(400).json({
       erro: "Título é obrigatório."
